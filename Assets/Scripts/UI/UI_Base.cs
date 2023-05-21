@@ -6,9 +6,11 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class UI_Base : MonoBehaviour
+public abstract class UI_Base : MonoBehaviour
 {
     Dictionary<Type, UnityEngine.Object[]> _objects = new Dictionary<Type, UnityEngine.Object[]>();
+
+    public abstract void Init(); // 불완전한 구현을 하여 다른 클래스에서 구현을 하게끔 만듬.
 
     protected void Bind<T>(Type type) where T : UnityEngine.Object
     {
@@ -34,11 +36,12 @@ public class UI_Base : MonoBehaviour
         return objects[idx] as T;
     }
 
+    protected GameObject GetObject(int idx) { return Get<GameObject>(idx); }
     protected TextMeshProUGUI GetText(int idx) { return Get<TextMeshProUGUI>(idx); }
     protected Button GetButton(int idx) { return Get<Button>(idx); }
     protected Image GetImage(int idx) { return Get<Image>(idx); }
 
-    public static void AddUIEvent(GameObject go, Action<PointerEventData>action, Define.UIEvent type = Define.UIEvent.Click )
+    public static void BindEvent(GameObject go, Action<PointerEventData>action, Define.UIEvent type = Define.UIEvent.Click )
     {
         UI_EventHandler evt = Util.GetOrAddComponent<UI_EventHandler>(go);
 

@@ -1,9 +1,6 @@
 # 인프런 강의 따라잡기
 > 간략한 프로젝트 소개 문구를 작성합니다.
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
 
 인프런 강의 공부용 프로젝트 및 깃허브 꾸미기
 
